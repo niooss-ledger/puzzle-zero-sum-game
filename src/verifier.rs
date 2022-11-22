@@ -35,6 +35,8 @@ pub fn verify<
 
     let xi = F::rand(&mut fs_rng);
     let opening_challenge = F::rand(&mut fs_rng);
+    println!("Verifier: xi = {}", xi);
+    println!("Verifier: opening_challenge = {}", opening_challenge);
 
     let point_label = String::from("xi");
     let query_set = QuerySet::from([
@@ -76,6 +78,7 @@ pub fn verify<
     };
 
     if lhs != rhs {
+        println!("Verifier: incorrect sum! {} != {}", lhs, rhs);
         return Err(Error::IncorrectSum);
     }
 
